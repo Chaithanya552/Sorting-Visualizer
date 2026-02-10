@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithm Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔢 Sorting Algorithm Visualizer</h1>
+            <p class="subtitle">Visualize how different sorting algorithms work</p>
+        </header>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="arrayInput">Enter Array (comma-separated):</label>
+                <input type="text" id="arrayInput" placeholder="e.g., 64, 34, 25, 12, 22, 11, 90">
+            </div>
+
+            <div class="control-group">
+                <label for="arraySize">Array Size:</label>
+                <input type="number" id="arraySize" min="5" max="50">
+                <button onclick="generateRandomArray()" class="btn-secondary">Generate Random Array</button>
+            </div>
+
+            <div class="control-group">
+                <label for="algorithm">Select Algorithm:</label>
+                <select id="algorithm">
+                    <option value="bubble">Bubble Sort</option>
+                    <option value="selection">Selection Sort</option>
+                    <option value="insertion">Insertion Sort</option>
+                    <option value="merge">Merge Sort</option>
+                    <option value="quick">Quick Sort</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="speed">Speed:</label>
+                <input type="range" id="speed" min="10" max="2000" value="200" oninput="updateSpeed(this.value)">
+                <span id="speedValue">200ms</span>
+            </div>
+
+            <div class="button-group">
+                <button onclick="goToVisualizer()" class="btn-primary" id="sortBtn" style="background:black;color:white;">Visualization</button>
+                <button onclick="resetVisualization()" class="btn-secondary" style="background:black;color:white;">Reset</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script src="Algorithms/bubble.js"></script>
+    <script src="Algorithms/selection.js"></script>
+    <script src="Algorithms/insertion.js"></script>
+    <script src="Algorithms/merge.js"></script>
+    <script src="Algorithms/quick.js"></script>
+    <script>
+        function goToVisualizer() {
+            const arrayInput = document.getElementById("arrayInput").value;
+            const encodedArray = encodeURIComponent(arrayInput);
+            window.location.href = `visualizer.html?array=${encodedArray}`;
+        }
+    </script>
+</body>
+</html>
